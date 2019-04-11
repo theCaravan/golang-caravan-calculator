@@ -68,7 +68,7 @@ func main() {
 		os.Exit(1)
 	}()
 
-	var version string = "Build 0.21"
+	var version string = "Build 0.22"
 	fmt.Printf("\nCaravan Calculator by The Caravan -- " + version)
 	fmt.Printf("\nBuilt from Python - Ported to Golang\n")
 
@@ -101,6 +101,13 @@ func main() {
 			}
 			continue
 
+			// Easter Egg
+		} else if inputString == "sezzle" {
+
+			sezzlelogo()
+			fmt.Printf("\nIt's Sezzle Time!\n")
+
+			// Type "exit" to exit
 		} else if inputString == "exit" {
 			break
 		}
