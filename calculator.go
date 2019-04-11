@@ -7,7 +7,9 @@ import (
 	"syscall"
 )
 
-func end() {
+// When called, this prints the Sezzle logo on the screen
+func sezzlelogo() {
+
 	fmt.Printf("\n                           WNW                            \n" +
 		"                          NK0N                            \n" +
 		"                        N000KXW                           \n" +
@@ -46,7 +48,12 @@ func end() {
 		"                          Nkood0W                         \n" +
 		"                           XOOX                           \n" +
 		"                            W                             \n")
+}
 
+// Graceful Shutdown
+func end() {
+
+	sezzlelogo()
 	fmt.Printf("\nGoodbye! :-)\n")
 }
 
