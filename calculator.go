@@ -68,7 +68,7 @@ func main() {
 		os.Exit(1)
 	}()
 
-	var version string = "Build 0.2"
+	var version string = "Build 0.21"
 	fmt.Printf("\nCaravan Calculator by The Caravan -- " + version)
 	fmt.Printf("\nBuilt from Python - Ported to Golang\n")
 
