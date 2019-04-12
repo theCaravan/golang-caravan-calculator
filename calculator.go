@@ -85,12 +85,12 @@ func main() {
 		fmt.Printf("\nCARAVAN-CALCULATOR >>> ")
 		fmt.Scanf("%s", &inputString)
 
-		// If this is empty, we will use the previous entry. If I typed "2 + 2", and then "", then the calculator will run "2 + 2" again
+		// If this is empty, we will use the previous value as it might hold info useful to us. Supposed to be like "Ans" on a calculator
 		if inputString == "" {
 			inputString = prevInput
 
 			// This allows me to explain what this calculator can do
-		} else if inputString == "help" || inputString == "?" {
+		} else if inputString == "help" {
 
 			fmt.Printf("\nList of supported operations. Note that FLOAT and INT are placeholders for the accepted value:\n")
 			i := 0
