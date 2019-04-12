@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"os"
 	"os/signal"
-	"strings"
 	"syscall"
 )
 
@@ -73,9 +72,8 @@ func main() {
 	fmt.Printf("\nCaravan Calculator by The Caravan -- " + version)
 	fmt.Printf("\nBuilt from Python - Ported to Golang\n")
 
-	var prevInput = ""    // This holds the previous value of whatever I type into the system after "CARAVAN-CALCULATOR >>>"
-	var inputString = ""  // This holds the current  value of whatever I type into the system after "CARAVAN-CALCULATOR >>>"
-	var storedAnswer = "" // This holds the answer to the previous entry. Allows use of "Ans" that is present in many calculators
+	var prevInput = ""   // This holds the previous value of whatever I type into the system after "CARAVAN-CALCULATOR >>>"
+	var inputString = "" // This holds the current  value of whatever I type into the system after "CARAVAN-CALCULATOR >>>"
 
 	// This was a capy-paste from my Python code. Supposedly shows what operations this calculator supports
 	var supportedOps = [4]string{"FLOAT + FLOAT", "FLOAT - FLOAT", "FLOAT * FLOAT", "FLOAT / FLOAT"}
@@ -85,12 +83,12 @@ func main() {
 		fmt.Printf("\nCARAVAN-CALCULATOR >>> ")
 		fmt.Scanf("%s", &inputString)
 
-		// If this is empty, we will use the previous entry. If I typed "2 + 2", and then "", then the calculator will run "2 + 2" again
+		// If this is empty, we will use the previous value as it might hold info useful to us. Supposed to be like "Ans" on a calculator
 		if inputString == "" {
 			inputString = prevInput
 
 			// This allows me to explain what this calculator can do
-		} else if inputString == "help" || inputString == "?" {
+		} else if inputString == "help" {
 
 			var i int = 0
 
@@ -108,11 +106,6 @@ func main() {
 
 			sezzlelogo()
 			fmt.Printf("\nIt's Sezzle Time!\n")
-
-			// If this has "ans", does not contain an "=" (meaning it would be a logic check - aka if x = y --> 0 or 1), or if the string is not just "ans"
-		} else if strings.Contains(inputString, "ans") && !strings.Contains(inputString, "=") && inputString != "ans" {
-
-			fmt.Printf("Hi I am here - Contains ans")
 
 			// Type "exit" to exit
 		} else if inputString == "exit" {
