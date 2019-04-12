@@ -68,38 +68,72 @@ func main() {
 		os.Exit(1)
 	}()
 
-	var version string = "Build 0.22"
+	version := "Build 0.23"
 	fmt.Printf("\nCaravan Calculator by The Caravan -- " + version)
 	fmt.Printf("\nBuilt from Python - Ported to Golang\n")
 
-	var prevInput = ""   // This holds the previous value of whatever I type into the system after "CARAVAN-CALCULATOR >>>"
-	var inputString = "" // This holds the current  value of whatever I type into the system after "CARAVAN-CALCULATOR >>>"
+	prevInput := ""   // This holds the previous value of whatever I type into the system after "CARAVAN-CALCULATOR >>>"
+	inputString := "" // This holds the current  value of whatever I type into the system after "CARAVAN-CALCULATOR >>>"
+	//var storedAnswer = "" // This holds the answer to the previous entry. Allows use of "Ans" that is present in many calculators
+	//var idkWhatOutoIs = 0 // This is "outo" on my old program. Not sure what this does but I think it stores the answer as an integer
 
 	// This was a capy-paste from my Python code. Supposedly shows what operations this calculator supports
-	var supportedOps = [4]string{"FLOAT + FLOAT", "FLOAT - FLOAT", "FLOAT * FLOAT", "FLOAT / FLOAT"}
+	supportedOps := [4]string{"FLOAT + FLOAT", "FLOAT - FLOAT", "FLOAT * FLOAT", "FLOAT / FLOAT"}
 
 	for true {
 
 		fmt.Printf("\nCARAVAN-CALCULATOR >>> ")
 		fmt.Scanf("%s", &inputString)
 
-		// If this is empty, we will use the previous value as it might hold info useful to us. Supposed to be like "Ans" on a calculator
+		// If this is empty, we will use the previous entry. If I typed "2 + 2", and then "", then the calculator will run "2 + 2" again
 		if inputString == "" {
 			inputString = prevInput
 
 			// This allows me to explain what this calculator can do
-		} else if inputString == "help" {
-
-			var i int = 0
+		} else if inputString == "help" || inputString == "?" {
 
 			fmt.Printf("\nList of supported operations. Note that FLOAT and INT are placeholders for the accepted value:\n")
-
+			i := 0
 			for i < len(supportedOps) {
-				var op string = supportedOps[i]
+				op := supportedOps[i]
 				fmt.Printf("- \n" + op)
 				i++
 			}
 			continue
+
+			// If this has "ans", does not contain an "=" (meaning it would be a logic check - aka if x = y --> 0 or 1), or if the string is not just "ans"
+
+			// } else if strings.Contains(inputString, "ans") && !strings.Contains(inputString, "=") && inputString != "ans" {
+			// 	// TODO fix the issues with the 3 requirements. They seem to not work properly
+			//
+			// 	fmt.Printf("Hi I am here - Contains ans")
+			//
+			// 	inputString = strings.ReplaceAll(inputString, "ans", storedAnswer)
+			//
+			// 	if reflect.TypeOf(idkWhatOutoIs).Name() == "int" {
+			//
+			// 		i, er := strconv.ParseInt(storedAnswer, 10, 0)
+			//
+			// 		// Put this because "er" is useless otherwise. Not sure what I will do here
+			// 		if er != nil {
+			// 			fmt.Printf("err is not null! returning")
+			// 			return
+			// 		}
+			//
+			// 		fmt.Printf("\nans <-- %d", i)
+			//
+			// 	} else {
+			//
+			// 		fmt.Printf("\nans <-- %s", storedAnswer)
+			//
+			// 	}
+			//
+			// 	if strings.Contains("=", inputString) {
+			// 		fmt.Printf("\nError: In Ans and it contains an equal sign")
+			// 		return
+			// 	}
+			//
+			// 	idkWhatOutoIs, er :=
 
 			// Easter Egg
 		} else if inputString == "sezzle" {
@@ -112,6 +146,19 @@ func main() {
 			break
 		}
 
+		// 	// Now the real stuff happens here - inputString is being digested into stuff we can work with
+		//
+		// 	inputStringArray := strings.Split(inputString, " ")
+		//
+		// 	// To prevent digits from being seperate (2 3 4 --> 234) without an operation
+		// 	inputStringEntry := ""
+		// 	i := 0
+		//
+		// 	for i < len(inputStringArray) {
+		// 		idkWhatIndIs =
+		// 		i++
+		// 	}
+		//
 	}
 
 	end()
